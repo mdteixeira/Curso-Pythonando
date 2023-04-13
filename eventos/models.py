@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+
 # Create your models here.
 class Evento(models.Model):
     criador = models.ForeignKey(User, on_delete=models.DO_NOTHING, null=True, blank=True)
@@ -10,6 +11,7 @@ class Evento(models.Model):
     data_termino = models.DateField()
     carga_horaria = models.IntegerField()
     logo = models.ImageField(upload_to='logos')
+    participantes = models.ManyToManyField(User, related_name="evento_participante", null=True, blank=True)
 
     # Paleta de Cores
 
